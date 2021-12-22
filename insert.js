@@ -2,7 +2,8 @@ const connection = require('./connect')
 const client = connection.connection
 var JSONbig = require('json-bigint')
 const fs = require('fs')
-const jsonFile = fs.readFileSync('./seed_data/retweets.json', {encoding: 'utf-8'})
+const file =  process.argv
+const jsonFile = fs.readFileSync(file[2], {encoding: 'utf-8'})
 const tweetData = JSONbig.parse(jsonFile)
 
 async function insertTweets(src) {
