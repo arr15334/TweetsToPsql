@@ -1,8 +1,10 @@
 CREATE TABLE public.mention
 (
-    user_id integer NOT NULL,
-    tweet_id integer NOT NULL,
-    PRIMARY KEY (user_id, tweet_id)
+    id bigint NOT NULL,
+    tweet_id bigint NOT NULL,
+    username character varying (50),
+    is_reply boolean,
+    PRIMARY KEY (id, tweet_id)
 );
 
 ALTER TABLE public.mention

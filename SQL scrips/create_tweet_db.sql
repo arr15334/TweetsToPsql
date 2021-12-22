@@ -1,18 +1,21 @@
 CREATE TABLE public.tweet
 (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     twitter_id bigint NOT NULL,
-    full_text character varying(240),
+    user_id bigint NOT NULL,
+    full_text character varying(800),
     created_at date,
-    source character varying(80),
-    in_reply_user_id integer,
-    geo_id integer,
+    src character varying(80),
+    in_reply_twitter_id bigint,
+    geo_id character varying(20),
     retweet_cnt integer,
     favorited_cnt integer,
-    language character varying(2),
+    replies integer,
+    quotes integer,
+    lang character varying(4),
     is_sensitive boolean,
-    user_id integer NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    CONSTRAINT tweet_id_constraint UNIQUE (twitter_id)
 );
 
 ALTER TABLE public.tweet
